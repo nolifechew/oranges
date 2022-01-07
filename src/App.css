@@ -1,0 +1,236 @@
+@charset "UTF-8";
+
+@import url('http://fonts.cdnfonts.com/css/arial-rounded-mt-bold');
+
+
+body {
+    font-family: 'Arial Rounded MT Bold', sans-serif;
+    font-size: 10vw;
+    background-color: orange;
+    background-position: top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+header {
+    background-color: #2673EF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+main {
+    color: black;
+
+}
+
+footer {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15pt;
+}
+
+h1 {
+    margin: 0px;
+    padding-left: 50px;
+    width: 600px;
+    font-size: 60pt;
+    text-align: left;
+}
+
+h2 {
+    margin: 0px;
+    padding-left: 50px;
+    width: 600px;
+    font-size: 30pt;
+    text-align: left;
+}
+
+p {
+    background-color: white;
+    margin-left: 25px;
+    margin-top: 25px;
+    padding: 25px;
+    width: 600px;
+    border-radius: 30px;
+    font-size: 15pt;
+    color: black;
+}
+
+.social {
+    cursor: pointer;
+    padding-left: 25px;
+    padding-right: 25px;
+    
+}
+
+.logo {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 75%;
+    height: auto;
+}
+
+.top-space {
+    margin-top: 25px;
+}
+
+.section {
+    width: 100%;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.hill {
+    background-image: url(images/hill.png);
+    background-repeat: no-repeat;
+    background-size:cover;
+    width: 100%;
+    height: 160px;
+}
+
+.aboutus {
+    padding-top: 100px;
+    background-color: #ACF682;
+    font-size: 30pt;
+}
+
+.traits {
+    background-image: url(images/traits-bg.png);
+    background-attachment: fixed;
+    font-size: 60pt;
+    color: black;
+}
+
+.connect {
+    background-color: #2673EF;
+    height: 15vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    font-size: 7vw;
+}
+.connect:hover {
+    color: #0F5FD3;
+}
+
+.mint {
+    background-color: #EF5B33;
+    height: 15vw;
+    width: 100%;
+    display: flex;
+    font-size: 7vw;
+
+}
+
+.mint-num {
+    background-color: #FFFF52;
+    height: 15vw;
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #EF5B33;
+}
+
+.up {
+    background-image: url(images/up.png);
+    background-position: center bottom;
+}
+.up:hover {
+    background-image: url(images/up-hover.png);
+}
+
+.down {
+    background-image: url(images/down.png);
+    background-position: center top;
+}
+.down:hover {
+    background-image: url(images/down-hover.png);
+}
+
+.pointer {
+    width: 100%;
+    height: 75px;
+    background-size: 3vw;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.mint-box {
+    color: #FFFF52;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.mint-box:hover {
+    color: #D6411E;
+    
+}
+
+.roadmap {
+    background-image: url(images/roadmap-bg.png);
+    background-attachment: fixed;
+    min-height: 500px;
+    color: #EF5B33;;
+}
+
+.team {
+    background-color: grey;
+    min-height: 500px;
+}
+
+/* BUTTTONS */
+
+.button {
+
+}
+
+
+
+@media (max-width:1100px) {
+
+    
+}
+
+/* PHONE */
+@media (max-width:700px){
+
+    h1{
+        width: calc(100vw - 100px);
+    }
+    h2{
+        width: calc(100vw - 100px);
+    }
+    p{
+        width: calc(100vw - 100px);
+    }
+
+
+    .mint{
+        height: 20vw;
+        font-size: 10vw;
+    }
+    .mint-num{
+        height: 20vw;
+        width: 20vw;
+    }
+    .pointer{
+        background-size: 3vw;
+    }
+
+    .connect{
+        height: 20vw;
+        font-size: 10vw;
+    }
+
+}
