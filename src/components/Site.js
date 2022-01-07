@@ -4,8 +4,8 @@ const Site = () => { return(
 
 <div>
 
-	This Site is not LIVE
-	
+	ORANGE FRIENDS WILL BE LIVE SOON
+
 </div>
 );}
 
