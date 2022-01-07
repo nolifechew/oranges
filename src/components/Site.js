@@ -13,13 +13,6 @@ const Site = () => { return(
 
 		{/* BUTTONS THAT SCROLL TO SECTION - ABOUT - ROADMAP */}
 
-		{/* CONNECT BUTTON */}
-		<div class="button" onClick={(event) => {
-			{/* this.props.connect() */ }
-			console.log("CONNECT PRESSED")
-		}}>
-		</div>
-
 		<img src={logo} alt="" class="logo"/>
 
 		<div class="hill"></div>
@@ -29,13 +22,6 @@ const Site = () => { return(
 
 	{/* MAIN	----------------------------------------------------------------------------------------------------- */}
 	<main>
-
-		{/* MINT BUTTON */}
-		<div class="button" onClick={(event) => {
-			{/* this.props.mint(1) */ }
-			console.log("MINT PRESSED")
-			}}>
-		</div>
 
 		{/* ABOUT US */}
 		<div class="section aboutus">
