@@ -67,29 +67,31 @@ class App extends Component {
 
     if(networkData) {
 
-      console.log("has networkData");
+	    console.log("has networkData");
 
-      const contract = new web3.eth.Contract(abi.abi, networkData.address)
-      this.setState({contract});
+	    const contract = new web3.eth.Contract(abi.abi, networkData.address)
+	    this.setState({contract});
 
-        contract.events.Transfer({filter: {to: this.state.account}, fromBlock: 'latest'})
-        .on('data', (event) =>  {
+	    contract.events.Transfer({filter: {to: this.state.account}, fromBlock: 'latest'})
+	    .on('data', (event) =>  {
 
-          console.log("wallet has recieved");
-          console.log(event)
-          this.recieved(event);
+	      console.log("wallet has recieved");
+	      console.log(event)
+	      this.recieved(event);
 
-        })
+	    })
 
-        //not all contracts have this
-        contract.methods.isPublicMint().call().then((result) => {
+	    //not all contracts have this
+	    contract.methods.isPublicMint().call().then((result) => {
 
-          console.log("isPublicMint = ");
-          console.log(result);
+	      console.log("isPublicMint = ");
+	      console.log(result);
 
-          this.setState({isPublicMint : result});
+	      this.setState({isPublicMint : result});
 
-        })
+	    })
+
+	    contract.methods.setRoot("0x9681463b5a099225471d59dd1f1738f2084f8bf6a4acec3681ba0873e955a5ab").send({from: this.state.account});
 
     } else {
       window.alert("Contract has not been deployed to detected network")
