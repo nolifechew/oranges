@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import keccak256 from 'keccak256';
 import Web3 from 'web3';
 
+import $ from'jquery';
+
 import abi from './abis/OrangeFriends.json';
 import Site from "./components/Site.js";
 
@@ -136,16 +138,28 @@ class App extends Component {
       console.log("Found Hex Proof: ")
       console.log(hex_proof)
 
+      this.privateMint();
+
       this.setState({proof : hex_proof})
 
       return
 
+    } else {
+      
     }
 
     this.setState({proof : ""})
 		return
 	  
 	}
+
+  privateMint() {
+    $(".mint-box").text("PRIVATE MINT");
+    $(".mint-box").css("font-size", "5vw");
+    $(".mint-box").css("cursor", "auto");
+    $(".mint-box").css("pointer-events", "none");
+    $("#num").text("");
+  }
 
   mint = async (num) => {
 

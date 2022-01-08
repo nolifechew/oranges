@@ -88,9 +88,10 @@ p {
 .hill {
     background-image: url(images/hill.png);
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size:contain;
+    background-position: bottom;
     width: 100%;
-    height: 160px;
+    height: 15vw;
 }
 
 .aboutus {
@@ -124,7 +125,7 @@ p {
     background-color: #EF5B33;
     height: 15vw;
     width: 100%;
-    display: flex;
+    display: none;
     font-size: 7vw;
 
 }
@@ -138,6 +139,11 @@ p {
     align-items: center;
     justify-content: center;
     color: #EF5B33;
+}
+
+.no-image {
+    width: 10vw;
+    height: 10vw;
 }
 
 .up {
@@ -159,9 +165,10 @@ p {
 .pointer {
     width: 100%;
     height: 75px;
-    background-size: 3vw;
+    background-size: 2vw;
     background-repeat: no-repeat;
     cursor: pointer;
+    display: none;
 }
 
 .mint-box {
