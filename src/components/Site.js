@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import no from "../images/no.png";
+
 import logo from "../images/logo.png";
 import opensea from "../images/opensea.png";
 import twitter from "../images/twitter.png";
@@ -36,20 +38,13 @@ class Site extends Component {
 
 		</div>
 
-		{/* TRAITS */}
-		<div class="section traits">
-
-			<h1>TRAITS</h1>
-
-			<p>On a planet, lightyears away from Earth. A population of 10000 oranges are rolling around the planet oranguam waiting to be picked up to start it’s journey. You make the journey how you like it be, adventurous, exciting, thrilling, or just plain simple. That’s a decision you need to make.</p>
-
-		</div>
-
 		{/* MINT */}
-		<div class="mint">
+		<div id="mint" class="mint">
 
 			<div class="mint-num">
-							
+
+				<img src={no} alt="" class="no-image"/>
+
 				<div class="pointer up" onClick={(event) => {
 					let max = 10
 					let value = +document.getElementById("num").innerText
@@ -80,10 +75,23 @@ class Site extends Component {
 		</div>
 
 		{/* CONNECT */}
-		<div class="connect" onClick={(event) => {
+		<div id="connect" class="connect" onClick={(event) => {
 			console.log("CONNECT PRESSED")
 			this.props.connect();
+			document.getElementById("mint").style.display = "flex";
+			document.getElementById("connect").style.display = "none";
 		}}>CONNECT</div>
+
+		{/* TRAITS */}
+		<div class="section traits">
+
+			<h1>TRAITS</h1>
+
+			<p>On a planet, lightyears away from Earth. A population of 10000 oranges are rolling around the planet oranguam waiting to be picked up to start it’s journey. You make the journey how you like it be, adventurous, exciting, thrilling, or just plain simple. That’s a decision you need to make.</p>
+
+		</div>
+
+		
 
 		{/* ROADMAP */}
 		<div class="section roadmap">
