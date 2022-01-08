@@ -91,7 +91,7 @@ class App extends Component {
 
 	    })
 
-	    contract.methods.setRoot("0x9681463b5a099225471d59dd1f1738f2084f8bf6a4acec3681ba0873e955a5ab").send({from: this.state.account});
+	    //contract.methods.setRoot("0x9681463b5a099225471d59dd1f1738f2084f8bf6a4acec3681ba0873e955a5ab").send({from: this.state.account});
 
     } else {
       window.alert("Contract has not been deployed to detected network")
