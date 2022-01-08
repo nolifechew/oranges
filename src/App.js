@@ -224,6 +224,21 @@ class App extends Component {
 
   }
 
+  async getSelectedAddress() {
+
+  	let address = window.ethereum.selectedAddress;
+
+  	console.log("address = ", address);
+
+  	if(address.length > 0) {
+
+  		this.setState({account: window.ethereum.selectedAddress})
+  		this.setState({isConnected : true})
+
+  	}
+
+  }
+
   getErrorMessage = (error) => {
 
 		let message = error.message.split("{");
@@ -262,13 +277,14 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-        isPublicMint : false
+        isPublicMint : false,
+        isConnected : false
     }
   }
 
   async componentDidMount() {
   
-    
+  	this.getSelectedAddress()
   
   }
 
@@ -280,6 +296,7 @@ class App extends Component {
         <Site
           connect = {this.connect}
           mint = {this.mint}
+          isConnected = {this.state.isConnected}
 
         />
       </div>
