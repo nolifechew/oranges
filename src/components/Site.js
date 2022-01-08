@@ -1,10 +1,14 @@
-import React from "react";
+import React, { Component } from 'react';
 
 import logo from "../images/logo.png";
 import opensea from "../images/opensea.png";
 import twitter from "../images/twitter.png";
 
-const Site = () => { return(
+class Site extends Component {
+
+	render() {
+
+		return(
 
 <div>
 
@@ -68,6 +72,7 @@ const Site = () => { return(
 			</div>
 			<div class="mint-box" onClick={(event) => {
 				let value = document.getElementById("num").innerText
+				this.props.mint(value)
 				console.log("MINT PRESSED")
 				console.log("mint " + value + " oranges")
 			}}>MINT</div>
@@ -77,6 +82,7 @@ const Site = () => { return(
 		{/* CONNECT */}
 		<div class="connect" onClick={(event) => {
 			console.log("CONNECT PRESSED")
+			this.props.connect();
 		}}>CONNECT</div>
 
 		{/* ROADMAP */}
@@ -123,6 +129,6 @@ const Site = () => { return(
 
 				
 </div>
-);}
+);}}
 
 export default Site;
