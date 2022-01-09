@@ -147,14 +147,12 @@ class App extends Component {
       console.log("Found Hex Proof: ")
       console.log(hex_proof)
 
-      this.privateMint();
-
       this.setState({proof : hex_proof})
 
       return
 
     } else {
-      
+		this.privateMint();
     }
 
     this.setState({proof : ""})
