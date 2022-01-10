@@ -78,8 +78,7 @@ class Site extends Component {
 		<div id="connect" class="connect" onClick={(event) => {
 			console.log("CONNECT PRESSED")
 			this.props.connect();
-			document.getElementById("mint").style.display = "flex";
-			document.getElementById("connect").style.display = "none";
+			
 		}}>CONNECT</div>
 
 		{/* TRAITS */}

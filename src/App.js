@@ -13,45 +13,55 @@ import Site from "./components/Site.js";
 class App extends Component {
 
 
-  async loadWeb3() {
+	async initializeWeb3() {
 
-    await window.ethereum.send('eth_requestAccounts')
+		var ws_provider = 'wss://mainnet.infura.io/ws/v3/5893b3ca7ab34840ae9e26b9617b216b'
+	  	var web3 = new Web3(Web3.givenProvider || new Web3.providers.WebsocketProvider(ws_provider))
 
-	  this.setState({account: window.ethereum.selectedAddress})
+		var infura = new Web3(new Web3.providers.WebsocketProvider(ws_provider))
 
-    var ws_provider = 'wss://mainnet.infura.io/ws/v3/5893b3ca7ab34840ae9e26b9617b216b'
-	  var web3 = new Web3(Web3.givenProvider || new Web3.providers.WebsocketProvider(ws_provider))
+	  	this.setState({infura: infura})
 
-    this.setState({account: web3.eth.getAccounts()[0]});
+	  	this.setState({web3: web3})
 
-    var infura = new Web3(new Web3.providers.WebsocketProvider(ws_provider))
+		this.getSelectedAddress(web3);
 
-	  this.setState({infura: infura})
 
-	  this.setState({web3: web3})
-
-    window.ethereum.on('accountsChanged', async (accounts) => {
-		  // Time to reload your interface with accounts[0]!
-		  console.log("accounts changed");
-		  await this.loadBlockchainData();
-		  this.loadTrees()
+		window.ethereum.on('accountsChanged', async (accounts) => {
+			// Time to reload your interface with accounts[0]!
+			console.log("accounts changed");
+			
+			this.getSelectedAddress()
 
 		});
 
 		window.ethereum.on('networkChanged', async (networkId) => {
-		  // Time to reload your interface with the new networkId
-		  console.log("networkChanged");
-		  await this.loadBlockchainData();
-		  this.loadTrees()
+			// Time to reload your interface with the new networkId
+			console.log("networkChanged");
+			
+			this.getSelectedAddress();
 		});
+
+	}
+
+
+  async requestConnection() {
+
+    await window.ethereum.send('eth_requestAccounts')
+
+    this.getSelectedAddress();
 
   }
 
 
 
-  async loadBlockchainData() {
+  async loadBlockchainData(web3 = null) {
 
-    const web3 = this.state.web3
+
+	if (web3 === null) {
+		web3 = this.state.web3
+	}
+
     const accounts = await web3.eth.getAccounts()
 
     console.log("accounts = ", accounts)
@@ -108,7 +118,7 @@ class App extends Component {
     }
   }
 
-  async loadTrees() {
+	async loadTrees() {
 
 		const { MerkleTree } = require('merkletreejs');
 
@@ -121,8 +131,6 @@ class App extends Component {
 
 		this.setState({Tree : tree})
 
-		console.log(this.state.account);
-
 		this.verify(leaf, tree)
 
 		var root_1 = this.retrieveRoot(tree)
@@ -131,36 +139,37 @@ class App extends Component {
 
 	}
 
-  retrieveRoot(tree){
+	retrieveRoot(tree){
 	  var root = tree.getHexRoot();
 	  return(root);
 	}
 
-  verify(leaf, tree) {
+	verify(leaf, tree) {
+	
+		var hex_proof = tree.getHexProof(leaf);
 
-    var hex_proof = tree.getHexProof(leaf);
+		if (hex_proof.length > 0) {
 
-    console.log("hexproof = ", hex_proof);
-        
-    if (hex_proof.length > 0) {
+			console.log("Found Hex Proof: ")
+			console.log(hex_proof)
 
-      console.log("Found Hex Proof: ")
-      console.log(hex_proof)
+			this.setState({proof : hex_proof})
 
-      this.setState({proof : hex_proof})
+			return
 
-      return
+		} else {
+			console.log("No Hex Found")
+			this.privateMint();
+		}
 
-    } else {
-		this.privateMint();
-    }
-
-    this.setState({proof : ""})
+		this.setState({proof : ""})
 		return
-	  
+		
 	}
 
   privateMint() {
+	$("mint").css("display", "flex");
+	$("connect").css("display", "none");
     $(".mint-box").text("PRIVATE MINT");
     $(".mint-box").css("font-size", "5vw");
     $(".mint-box").css("cursor", "auto");
@@ -230,24 +239,28 @@ class App extends Component {
 
   connect = async () => {
 
-    await this.loadWeb3()
-    await this.loadBlockchainData()
-    this.loadTrees()
+    await this.requestConnection()
 
   }
 
-  async getSelectedAddress() {
+  async getSelectedAddress(web3 = null) {
 
-  	let address = window.ethereum.selectedAddress;
+	if (web3 == null) {
+		web3 = this.state.web3
+	}
 
-  	console.log("address = ", address);
+	var accounts = await web3.eth.getAccounts()[0];
 
-  	if(address.length > 0) {
+	if (accounts !== null) {
+		this.setState({isConnected : true})
+		await this.loadBlockchainData();
+		this.loadTrees();
 
-  		this.setState({account: window.ethereum.selectedAddress})
-  		this.setState({isConnected : true})
-
-  	}
+	} else {
+		console.log("error getting account")
+		this.setState({account: ""});
+		this.setState({isConnected: false});
+	}
 
   }
 
@@ -296,7 +309,11 @@ class App extends Component {
 
   async componentDidMount() {
   
-  	this.getSelectedAddress()
+  	await this.initializeWeb3();
+
+	this.getSelectedAddress();
+
+	
   
   }
 
