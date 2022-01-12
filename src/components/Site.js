@@ -67,9 +67,12 @@ class Site extends Component {
 			</div>
 			<div class="mint-box" onClick={(event) => {
 				let value = document.getElementById("num").innerText
-				this.props.mint(value)
-				console.log("MINT PRESSED")
-				console.log("mint " + value + " oranges")
+				if (value > 0) {
+					this.props.mint(value)
+					console.log("MINT PRESSED")
+					console.log("mint " + value + " oranges")
+				}
+				
 			}}>MINT</div>
 
 		</div>
@@ -108,7 +111,8 @@ class Site extends Component {
 			<p>The aim is to launch a clothing line including hoodies, t-shirts, caps etc. Alongside accessories complementing your fit or just styling items such as keyring, lanyards, mugs etc. These will be both customizable to your nft or the standard logo of Orange friends.</p>
 
 			<h2>Phase 4: Voxel Art</h2>
-			<p>Voxel style little orange friends where it will be exclusive to people who hold the orange friend or mutated orange friend. There will be an alpha chat for the holders, allowing us to efficiently and effectively allocate the voxel orange to the current holders of the pixelated little orange friends. Will be buying land in the sandbox allowing you showcase and interact</p>
+			<p>Voxel style little 
+				orange friends where it will be exclusive to people who hold the orange friend or mutated orange friend. There will be an alpha chat for the holders, allowing us to efficiently and effectively allocate the voxel orange to the current holders of the pixelated little orange friends. Will be buying land in the sandbox allowing you showcase and interact</p>
 
 		</div>
 
@@ -116,6 +120,29 @@ class Site extends Component {
 		<div class="section team">
 
 			<h1>TEAM</h1>
+
+			<div class="members">
+				<div class="member">
+					<div class="dot red"></div>
+					HUMPTY / LEAD
+
+				</div>
+				<div class="member">
+					<div class="dot yellow"></div>
+					ALSSY / ARTIST
+
+				</div>
+				<div class="member">
+					<div class="dot green"></div>
+					KING / CONTRACT
+
+				</div>
+				<div class="member">
+					<div class="dot blue"></div>
+					SLOW / WEB
+
+				</div>
+			</div>
 
 		</div>
 

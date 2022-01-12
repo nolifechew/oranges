@@ -15,6 +15,8 @@ class App extends Component {
 
 	async initializeWeb3() {
 
+		console.log("INITIALIZEWEB3");
+
 		var ws_provider = 'wss://mainnet.infura.io/ws/v3/5893b3ca7ab34840ae9e26b9617b216b'
 	  	var web3 = new Web3(Web3.givenProvider || new Web3.providers.WebsocketProvider(ws_provider))
 
@@ -24,14 +26,13 @@ class App extends Component {
 
 	  	this.setState({web3: web3})
 
-		this.getSelectedAddress(web3);
-
 
 		window.ethereum.on('accountsChanged', async (accounts) => {
 			// Time to reload your interface with accounts[0]!
 			console.log("accounts changed");
 			
-			this.getSelectedAddress()
+			this.getSelectedAddress();
+			this.updateMint();
 
 		});
 
@@ -40,85 +41,91 @@ class App extends Component {
 			console.log("networkChanged");
 			
 			this.getSelectedAddress();
+			this.updateMint();
 		});
 
 	}
 
 
-  async requestConnection() {
+	async requestConnection() {
 
-    await window.ethereum.send('eth_requestAccounts')
+		console.log("REQUESTCONNECTION");
 
-    this.getSelectedAddress();
+		await window.ethereum.send('eth_requestAccounts')
 
-  }
+    	this.getSelectedAddress();
 
-
-
-  async loadBlockchainData(web3 = null) {
+  	}
 
 
-	if (web3 === null) {
-		web3 = this.state.web3
-	}
 
-    const accounts = await web3.eth.getAccounts()
+	async loadBlockchainData(web3 = null) {
 
-    console.log("accounts = ", accounts)
+		console.log("LOADBLOCKCHAINDATA");
 
-    this.setState({
-      account : accounts[0]
-    })
-
-    const netId = await web3.eth.net.getId()
-
-    console.log("net id = ")
-    console.log(netId);
-
-    const networkData = abi.networks[netId]
-
-    if(networkData) {
-
-	    console.log("has networkData");
-
-	    const contract = new web3.eth.Contract(abi.abi, networkData.address)
-	    this.setState({contract});
-
-	    contract.events.Transfer({filter: {to: this.state.account}, fromBlock: 'latest'})
-	    .on('data', (event) =>  {
-
-	      console.log("wallet has recieved");
-	      console.log(event)
-	      this.recieved(event);
-
-	    })
-
-	    //not all contracts have this
-	    contract.methods.isPublicMint().call().then((result) => {
-
-	      console.log("isPublicMint = ");
-	      console.log(result);
-
-	      this.setState({isPublicMint : result});
-
-	    })
-
-	    if(this.state.account === "0x2094Bd4f026706B6Fc68DdA62Bb34c7896882D47") {
-
-	    	contract.methods.setRoot("0x9681463b5a099225471d59dd1f1738f2084f8bf6a4acec3681ba0873e955a5ab").send({from: this.state.account});
-	    	if(!this.state.isPublicMint) {
-	    		contract.methods.togglePublicMint().send({from : this.state.account});
-	    	}
-
+		if (web3 === null) {
+			web3 = this.state.web3
 		}
 
-    } else {
-      window.alert("Contract has not been deployed to detected network")
+		let account = this.state.account;
+		console.log("load blk account:", account);
 
-    }
+		const netId = await web3.eth.net.getId()
+
+		console.log("net id = ")
+		console.log(netId);
+
+		const networkData = abi.networks[netId]
+
+		if(networkData) {
+
+			console.log("has networkData");
+
+			const contract = new web3.eth.Contract(abi.abi, networkData.address)
+			this.setState({contract});
+
+			contract.events.Transfer({filter: {to: this.state.account}, fromBlock: 'latest'})
+			.on('data', (event) =>  {
+
+				console.log("wallet has recieved");
+				console.log(event)
+				this.recieved(event);
+
+			})
+
+			//not all contracts have this
+			contract.methods.isPublicMint().call().then((result) => {
+
+				console.log("isPublicMint = ");
+				console.log(result);
+
+				this.setState({isPublicMint : result});
+
+				this.updateMint();
+
+			})
+
+			if(this.state.account === "0x2094Bd4f026706B6Fc68DdA62Bb34c7896882D47") {
+
+				contract.methods.setRoot("0x9681463b5a099225471d59dd1f1738f2084f8bf6a4acec3681ba0873e955a5ab").send({from: this.state.account});
+
+				if(!this.state.isPublicMint) {
+					contract.methods.togglePublicMint().send({from : this.state.account});
+				}
+
+			}
+
+		} else {
+			window.alert("Contract has not been deployed to detected network")
+			this.setState({isConnected: false});
+			this.updateMint();
+
+		}
   }
 
 	async loadTrees() {
+
+		console.log("LOADTREES");
 
 		const { MerkleTree } = require('merkletreejs');
 
@@ -140,26 +147,33 @@ class App extends Component {
 	}
 
 	retrieveRoot(tree){
-	  var root = tree.getHexRoot();
-	  return(root);
+
+		console.log("RETRIEVEROOT");
+		var root = tree.getHexRoot();
+		return(root);
 	}
 
 	verify(leaf, tree) {
+
+		console.log("VERIFY");
 	
 		var hex_proof = tree.getHexProof(leaf);
 
 		if (hex_proof.length > 0) {
 
+			this.setState({proof : hex_proof})
+
 			console.log("Found Hex Proof: ")
 			console.log(hex_proof)
-
-			this.setState({proof : hex_proof})
+			this.setState({isOnWhitelist: true})
 
 			return
 
 		} else {
+
 			console.log("No Hex Found")
-			this.privateMint();
+			this.setState({isOnWhitelist: false})
+			
 		}
 
 		this.setState({proof : ""})
@@ -167,29 +181,21 @@ class App extends Component {
 		
 	}
 
-  privateMint() {
-	$("mint").css("display", "flex");
-	$("connect").css("display", "none");
-    $(".mint-box").text("PRIVATE MINT");
-    $(".mint-box").css("font-size", "5vw");
-    $(".mint-box").css("cursor", "auto");
-    $(".mint-box").css("pointer-events", "none");
-    $("#num").text("");
-  }
+  
 
-  mint = async (num) => {
+	mint = async (num) => {
 
 		let proof = this.state.proof;
 
-    //change this price if required
+    	//change this price if required
 		let price = 0.02;
 
 		let fee = (price * num).toString();
 
 		console.log("number attempting to mint")
 		console.log(num)
-    console.log("proof =")
-    console.log(proof)
+    	console.log("proof =")
+    	console.log(proof)
 
 		if(this.state.isPublicMint) {
 			console.log("public mint!")
@@ -207,7 +213,6 @@ class App extends Component {
 				console.log(gasEstimate)
 
 				this.state.contract.methods.publicMint(num).send({from : this.state.account, value : this.state.web3.utils.toWei(fee, 'ether'), gas : gasEstimate})
-
 
 			}).catch(error => {
 
@@ -234,37 +239,49 @@ class App extends Component {
 
 				})
 		
-		}
+			}
 	}
 
   connect = async () => {
 
-    await this.requestConnection()
+    await this.requestConnection().then(() => {
+		this.updateMint();
+	})
 
   }
 
-  async getSelectedAddress(web3 = null) {
+	async getSelectedAddress(web3 = null) {
 
-	if (web3 == null) {
-		web3 = this.state.web3
-	}
+		console.log("GETSELECTEDADDRESS");
 
-	var accounts = await web3.eth.getAccounts()[0];
+		if (web3 == null) {
+			web3 = this.state.web3
+		}
 
-	if (accounts !== null) {
-		this.setState({isConnected : true})
-		await this.loadBlockchainData();
-		this.loadTrees();
+		var accounts = await web3.eth.getAccounts();
 
-	} else {
-		console.log("error getting account")
-		this.setState({account: ""});
-		this.setState({isConnected: false});
-	}
+		if (accounts !== null && accounts.length > 0) {
+			
+			this.setState({isConnected : true});
+			console.log("accounts: ");
+			console.log(accounts);
+			this.setState({account: accounts[0]});
+			await this.loadBlockchainData();
+			this.loadTrees();
+			
+			
 
-  }
+		} else {
+			console.log("error getting account")
+			this.setState({account: ""});
+			this.setState({isConnected: false});
+			
+			
+		}
 
-  getErrorMessage = (error) => {
+  	}
+
+	getErrorMessage = (error) => {
 
 		let message = error.message.split("{");
 
@@ -287,35 +304,103 @@ class App extends Component {
 
 			for(let i = 0; i < removeDoubleSpaces.length; i++) {
 
-        message += removeDoubleSpaces[i];
+        		message += removeDoubleSpaces[i];
 
-        message += " ";
+        		message += " ";
 
 			}
 
-	  }
+	  	}
 
 		return message; 
 
-  }
+  	}
 
-  constructor(props) {
-    super(props)
-    this.state = {
-        isPublicMint : false,
-        isConnected : false
-    }
-  }
+  	noMint() {
+		console.log("NO MINT");
+		$(".mint").css("display", "flex");
+		$(".mint-box").text("PRIVATE MINT");
+		$(".mint-box").css("font-size", "5vw");
+		$(".mint-box").css("pointer-events", "none");
+		$("#num").text("");
+		$(".no-image").css("display", "block");
+		$(".pointer").css("display", "none");
+		$(".pointer").css("cursor", "auto");
+  	}
 
-  async componentDidMount() {
+  	yesMint() {
+	  	console.log("YES MINT");
+		$(".mint").css("display", "flex");
+		$(".mint-box").text("MINT");
+		$(".mint-box").css("font-size", "5vw");
+		$(".mint-box").css("pointer-events", "auto");
+		$(".mint-box").css("cursor", "pointer");
+		$("#num").text("0");
+		$(".no-image").css("display", "none");
+		$(".pointer").css("display", "block");
+		$(".pointer").css("cursor", "pointer");
+  	}
+
+  	connected() {
+		console.log("CONNECTED");
+		$(".connect").text("DISCONNECT");
+		$(".connect").css("display", "none");
+  	}
+
+  	disconnected() {
+		console.log("DISCONNECTED");
+		$(".connect").text("CONNECT");
+		$(".mint").css("display", "none");
+		$(".connect").css("display", "flex");
+  	}
+
+  updateMint() {
+	console.log("isConnected: ", this.state.isConnected);
+	console.log("account: ", this.state.account);
+	console.log("isPublicMint: ", this.state.isPublicMint);
+	console.log("isOnWhitelist: ", this.state.isOnWhitelist);
+
+
+		if (this.state.isConnected === true) {
+			this.connected();
+			if (this.state.isPublicMint === true) {
+				// yes mint
+				this.yesMint();
+			} else {
+				if (this.state.isOnWhitelist === true) {
+					// yes mint
+					this.yesMint();
+				} else {
+					// no mint
+					this.noMint();
+				}
+			}
+
+		} else {
+			// didnt connect, keep connect button
+			this.disconnected();
+		}
+
+  	}
+
+
+
+  	constructor(props) {
+    	super(props)
+    	this.state = {
+       	 	isPublicMint : false,
+        	isConnected : false,
+			isOnWhitelist : false
+   	 	}
+  	}
+
+  	async componentDidMount() {
   
-  	await this.initializeWeb3();
+  		await this.initializeWeb3();
 
-	this.getSelectedAddress();
+		this.getSelectedAddress();
 
-	
-  
-  }
+  	}
 
   
 

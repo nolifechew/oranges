@@ -2,6 +2,21 @@
 
 @import url('http://fonts.cdnfonts.com/css/arial-rounded-mt-bold');
 
+.red {
+    background-color:#EF5B33;
+}
+
+.blue {
+    background-color:#2673EF;
+}
+
+.yellow {
+    background-color:#FFFF52;
+}
+
+.green {
+    background-color: #ACF682;
+}
 
 body {
     font-family: 'Arial Rounded MT Bold', sans-serif;
@@ -101,7 +116,7 @@ p {
 }
 
 .traits {
-    background-image: url(images/traits-bg.png);
+    background-image: url(images/traits.png);
     background-attachment: fixed;
     font-size: 60pt;
     color: black;
@@ -194,6 +209,31 @@ p {
 .team {
     background-color: grey;
     min-height: 500px;
+}
+
+.members {
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+}
+
+.member {
+    display: flex;
+    align-items: center;
+    min-width: 650px;
+    width: 50%;
+    font-size: 50px;
+    
+}
+
+.dot {
+    margin: 25px;
+    margin-left: 50px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    display: inline-block;
+    border:10px solid black;
 }
 
 /* BUTTTONS */
