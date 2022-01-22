@@ -7,7 +7,7 @@ import Web3 from 'web3';
 
 import $ from'jquery';
 
-import abi from './abis/OrangeFriends.json';
+import abi from './abis/Orange.json';
 import Site from "./components/Site.js";
 
 class App extends Component {

@@ -15,7 +15,6 @@
     "web-vitals": "^1.1.2",
     "web3": "^1.6.1",
     "web3modal": "^1.9.4",
-    
     "jquery": "^3.6.0"
   },
   "scripts": {
