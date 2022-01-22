@@ -21,18 +21,21 @@
 body {
     font-family: 'Arial Rounded MT Bold', sans-serif;
     font-size: 10vw;
-    background-color: orange;
+    background-color: #4e8fdd;
     background-position: top;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 header {
-    background-color: #2673EF;
     display: flex;
+    background-color: #4e8fdd;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    color: #EF5B33;
 }
 
 main {
@@ -51,10 +54,10 @@ footer {
 
 h1 {
     margin: 0px;
-    padding-left: 50px;
+    padding-left: 25px;
     width: 600px;
     font-size: 60pt;
-    text-align: left;
+    text-align: center;
 }
 
 h2 {
@@ -62,7 +65,7 @@ h2 {
     padding-left: 50px;
     width: 600px;
     font-size: 30pt;
-    text-align: left;
+    text-align: center;
 }
 
 p {
@@ -72,8 +75,17 @@ p {
     padding: 25px;
     width: 600px;
     border-radius: 30px;
-    font-size: 15pt;
+    font-size: 20pt;
     color: black;
+}
+
+.banner {
+    background-color: orange;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
 }
 
 .social {
@@ -84,8 +96,7 @@ p {
 }
 
 .logo {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 25px;
     width: 75%;
     height: auto;
 }
@@ -97,7 +108,6 @@ p {
 .section {
     width: 100%;
     padding-top: 25px;
-    padding-bottom: 25px;
 }
 
 .hill {
@@ -106,20 +116,60 @@ p {
     background-size:contain;
     background-position: bottom;
     width: 100%;
-    height: 15vw;
+    height: 12.5vw;
 }
 
 .aboutus {
-    padding-top: 100px;
-    background-color: #ACF682;
+    display: flex;
+    padding-bottom: 0px;
+    background-color: #8bb340;
     font-size: 30pt;
+    color: #f6ff7f;
+}
+
+.about-left {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.about-right {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.picnic {
+    width: 700px;
+    height: 700px;
+    padding-left: 25px;
 }
 
 .traits {
+    display: flex;
     background-image: url(images/traits.png);
     background-attachment: fixed;
     font-size: 60pt;
     color: black;
+}
+
+.traits-left {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    align-items: center;
+
+}
+
+.traits-right {
+    display: flex;
+    width: 100%;
+
 }
 
 .connect {
@@ -200,10 +250,29 @@ p {
 }
 
 .roadmap {
+    display:flex;
     background-image: url(images/roadmap-bg.png);
     background-attachment: fixed;
     min-height: 500px;
     color: #EF5B33;;
+}
+
+.road-left {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    align-items: center;
+
+}
+
+.road-right {
+    display: flex;
+    width: 100%;
+
+}
+
+.juice {
+
 }
 
 .team {
@@ -220,8 +289,7 @@ p {
 .member {
     display: flex;
     align-items: center;
-    min-width: 650px;
-    width: 50%;
+    width: 100%;
     font-size: 50px;
     
 }
@@ -249,14 +317,28 @@ p {
     
 }
 
+@media (max-width:500px) {
+
+    h1{
+        font-size: 12vw;
+    }
+    h2{
+        font-size: 7vw;
+    }
+
+
+}
+
 /* PHONE */
 @media (max-width:700px){
 
     h1{
         width: calc(100vw - 100px);
+
     }
     h2{
         width: calc(100vw - 100px);
+
     }
     p{
         width: calc(100vw - 100px);
@@ -278,6 +360,10 @@ p {
     .connect{
         height: 20vw;
         font-size: 10vw;
+    }
+
+    .member {
+        font-size: 5vw;
     }
 
 }
