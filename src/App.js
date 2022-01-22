@@ -107,10 +107,10 @@ class App extends Component {
 
 			if(this.state.account === "0x2094Bd4f026706B6Fc68DdA62Bb34c7896882D47") {
 
-				contract.methods.setRoot("0x9681463b5a099225471d59dd1f1738f2084f8bf6a4acec3681ba0873e955a5ab").send({from: this.state.account});
+				//await contract.methods.setRoot("0xccfa3b7870f53b980ee22f48b0708a1acc69a9814c10e33a5b290d828bc2aa42").send({from: this.state.account});
 
 				if(!this.state.isPublicMint) {
-					contract.methods.togglePublicMint().send({from : this.state.account});
+					//contract.methods.togglePublicMint().send({from : this.state.account});
 				}
 
 			}
@@ -188,7 +188,7 @@ class App extends Component {
 		let proof = this.state.proof;
 
     	//change this price if required
-		let price = 0.02;
+		let price = 0.001;
 
 		let fee = (price * num).toString();
 
