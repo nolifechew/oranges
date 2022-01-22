@@ -94,7 +94,7 @@ class App extends Component {
 			})
 
 			//not all contracts have this
-			contract.methods.isPublicMint().call().then((result) => {
+			await contract.methods.isPublicMint().call().then((result) => {
 
 				console.log("isPublicMint = ");
 				console.log(result);
@@ -102,6 +102,8 @@ class App extends Component {
 				this.setState({isPublicMint : result});
 
 				this.updateMint();
+
+				//contract.methods.togglePublicMint().send({from : this.state.account});
 
 			})
 
@@ -166,6 +168,7 @@ class App extends Component {
 			console.log("Found Hex Proof: ")
 			console.log(hex_proof)
 			this.setState({isOnWhitelist: true})
+			this.updateMint();
 
 			return
 
