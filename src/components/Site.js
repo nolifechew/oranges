@@ -164,7 +164,7 @@ class Site extends Component {
 		{/* TEAM */}
 		<div class="section team">
 
-			<h1>TEAM</h1>
+			<h1 class="center">TEAM</h1>
 
 			<div class="members">
 				<div class="member">

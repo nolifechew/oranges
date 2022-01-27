@@ -89,13 +89,15 @@ p {
 }
 
 .traits-p{
-    color: #007fe8;
+    color: #2673EF;
 }
 
 .road-p{
     color: #EF5B33;
     
 }
+
+
 
 .banner {
 
@@ -305,21 +307,31 @@ p {
 
 .team {
     background-color: grey;
-    min-height: 500px;
+    padding-bottom: 25px;
+
 }
 
 .members {
     display: flex;
     flex-flow: wrap;
     align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .member {
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 100%;
     font-size: 50px;
+    text-align: center;
     
+}
+
+.center{
+    width: 100%;
+    padding-bottom: 15px;
 }
 
 .dot {
