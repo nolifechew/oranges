@@ -8,8 +8,8 @@ import no from "../images/no.png";
 
 import juice from "../images/juice.png";
 
-import opensea from "../images/opensea.png";
-import twitter from "../images/twitter.png";
+//import opensea from "../images/opensea.png";
+//import twitter from "../images/twitter.png";
 
 class Site extends Component {
 
