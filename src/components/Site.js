@@ -27,7 +27,6 @@ class Site extends Component {
 
 			<div class="social-button">TWITTER</div>
 			<div class="social-button">OPENSEA</div>
-			<div class="social-button">CONNECT</div>
 
 
 		</div>
@@ -170,22 +169,22 @@ class Site extends Component {
 			<div class="members">
 				<div class="member">
 					<div class="dot red"></div>
-					HUMPTY / LEAD AND COMMUNITY
+					HUMPTY - LEAD / COMMUNITY
 
 				</div>
 				<div class="member">
 					<div class="dot yellow"></div>
-					ALSSY / ARTIST
+					ALSSY - ARTIST
 
 				</div>
 				<div class="member">
 					<div class="dot green"></div>
-					ORANGEDEV / CONTRACT
+					ORANGEDEV - CONTRACT
 
 				</div>
 				<div class="member">
 					<div class="dot blue"></div>
-					SLOW / WEB
+					SLOW - WEB
 
 				</div>
 			</div>

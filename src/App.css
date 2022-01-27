@@ -334,6 +334,9 @@ p {
     h2{
         font-size: 7vw;
     }
+    p{
+        font-size: 5vw;
+    }
 
 
 }
@@ -351,6 +354,19 @@ p {
     }
     p{
         width: calc(100vw - 100px);
+        
+    }
+
+    .about-right {
+        display: none;
+    }
+
+    .road-right {
+        display: none;
+    }
+
+    .traits-right {
+        display: none;
     }
 
 
