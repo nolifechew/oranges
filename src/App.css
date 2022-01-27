@@ -36,6 +36,7 @@ header {
     align-items: center;
     justify-content: flex-start;
     color: #EF5B33;
+    padding-bottom: 20px;
 }
 
 main {
@@ -44,8 +45,6 @@ main {
 }
 
 footer {
-  width: 100%;
-  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,19 +79,29 @@ p {
 }
 
 .banner {
-    background-color: orange;
+
     width: 100%;
     height: 100px;
     display: flex;
     align-items: center;
-    justify-content: right;
+    justify-content: center;
 }
 
 .social {
-    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding-left: 25px;
     padding-right: 25px;
     
+}
+
+.social-button {
+    color: white;
+    cursor: pointer;
+    font-size: 20pt;
+    text-align: center;
+    width: 30%;
 }
 
 .logo {

@@ -25,9 +25,9 @@ class Site extends Component {
 		{/* BUTTONS THAT SCROLL TO SECTION - ABOUT - ROADMAP */}
 		<div class="banner">
 
-			<h2>TWITTER</h2>
-			<h2>OPENSEA</h2>
-			<h2>CONNECT</h2>
+			<div class="social-button">TWITTER</div>
+			<div class="social-button">OPENSEA</div>
+			<div class="social-button">CONNECT</div>
 
 
 		</div>
@@ -47,7 +47,7 @@ class Site extends Component {
 
 				<div class="about-left">
 
-					<h1>about us</h1>
+					<h1>what is it?</h1>
 
 					<p>Each orange originally started as seed, being planted naturally in the rich soil of orangum. Through the years rainfall and sunny days came along till the tree grew strong and tall. The oranges grew day by day till becoming a little orange. As they prematurely fall out, they’re looking for someone to foster.</p>
 
@@ -170,7 +170,7 @@ class Site extends Component {
 			<div class="members">
 				<div class="member">
 					<div class="dot red"></div>
-					HUMPTY / LEAD and COMMUNITY
+					HUMPTY / LEAD AND COMMUNITY
 
 				</div>
 				<div class="member">
@@ -200,10 +200,12 @@ class Site extends Component {
 	{/* FOOTER	----------------------------------------------------------------------------------------------------- */}
 	<footer>
 
-		Little Orange Friends
+		<div class="banner">
 
-		<img src={opensea} alt="" class="social"/>
-		<img src={twitter} alt="" class="social"/>
+			<div class="social-button">TWITTER</div>
+			<div class="social-button">OPENSEA</div>
+
+		</div>
 
 	</footer>
 
