@@ -79,6 +79,24 @@ p {
     color: black;
 }
 
+.white-p{
+    color: white;
+}
+
+.about-p{
+    color: #8bb340;
+    
+}
+
+.traits-p{
+    color: #007fe8;
+}
+
+.road-p{
+    color: #EF5B33;
+    
+}
+
 .banner {
 
     width: 100%;
@@ -102,7 +120,7 @@ p {
     cursor: pointer;
     font-size: 20pt;
     text-align: center;
-    width: 30%;
+    width: 50%;
 }
 
 .logo {
@@ -264,7 +282,7 @@ p {
     background-image: url(images/roadmap-bg.png);
     background-attachment: fixed;
     min-height: 500px;
-    color: #EF5B33;;
+    color: #EF5B33;
 }
 
 .road-left {
@@ -336,7 +354,13 @@ p {
         font-size: 10vw;
     }
     p{
-        font-size: 8vw;
+        font-size: 4vw;
+    }
+    .social-button{
+        
+    }
+    .banner{
+        height: 50px;
     }
 
 
