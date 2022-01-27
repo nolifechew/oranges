@@ -53,7 +53,7 @@ footer {
 
 h1 {
     margin: 0px;
-    padding-left: 25px;
+
     width: 600px;
     font-size: 60pt;
     text-align: center;
@@ -61,7 +61,7 @@ h1 {
 
 h2 {
     margin: 0px;
-    padding-left: 50px;
+
     width: 600px;
     font-size: 30pt;
     text-align: center;
@@ -70,6 +70,7 @@ h2 {
 p {
     background-color: white;
     margin-left: 25px;
+    margin-right: 25px;
     margin-top: 25px;
     padding: 25px;
     width: 600px;
@@ -332,10 +333,10 @@ p {
         font-size: 12vw;
     }
     h2{
-        font-size: 7vw;
+        font-size: 10vw;
     }
     p{
-        font-size: 5vw;
+        font-size: 8vw;
     }
 
 
