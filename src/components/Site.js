@@ -104,9 +104,9 @@ class Site extends Component {
 		{/* CONNECT */}
 		<div id="connect" class="connect" onClick={(event) => {
 			console.log("CONNECT PRESSED")
-			this.props.connect();
+			//this.props.connect();
 			
-		}}>CONNECT</div>
+		}}>NOT LIVE YET</div>
 
 		{/* TRAITS */}
 		<div class="section traits">
