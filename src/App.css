@@ -97,6 +97,23 @@ p {
     
 }
 
+a {
+    font-size: 20pt;
+    text-align: center;
+    width: 50%;
+}
+
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
+
 
 
 .banner {
@@ -120,9 +137,7 @@ p {
 .social-button {
     color: white;
     cursor: pointer;
-    font-size: 20pt;
-    text-align: center;
-    width: 50%;
+
 }
 
 .logo {

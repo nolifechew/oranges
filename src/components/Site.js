@@ -25,9 +25,15 @@ class Site extends Component {
 		{/* BUTTONS THAT SCROLL TO SECTION - ABOUT - ROADMAP */}
 		<div class="banner">
 
-			<div class="social-button">TWITTER</div>
-			<div class="social-button">OPENSEA</div>
+			<a href="https://twitter.com/orangefriends2?s=21" target="_blank" rel="noopener noreferrer">
+				<div class="social-button" >TWITTER</div>
+			</a>
 
+			
+			<a href="">
+				<div class="social-button" >OPENSEA</div>
+			</a>
+			
 
 		</div>
 
@@ -115,7 +121,7 @@ class Site extends Component {
 
 				<h1 class="traits-p">TRAITS</h1>
 
-				<p class="traits-p">With 10,000 oranges and X traits, every Orange Friend is unique. Some are zombies and some are made of ice. Some do buissness and some are in monkey costumes. Hopefully you get an Orange Friend with rare traits and can show them to your friends.</p>
+				<p class="traits-p">With 10,000 oranges and X traits, every Orange Friend is unique. Some are zombies and some are made of ice. Some do buisness and some are in monkey costumes. Hopefully you get an Orange Friend with rare traits and can show them to your friends.</p>
 
 			</div>
 
@@ -137,7 +143,7 @@ class Site extends Component {
 				<h1>ROADMAP</h1>
 
 				<h2 class="top-space">Phase 1: Events</h2>
-				<p class="road-p">We will be hosting events for our holders such as ama’s, giveaways &amp; others events for us to interact. Provide updates and timelines of each phase launch. Allowing opportunities to be whitelisted and potentially a role in discord.</p>
+				<p class="road-p">We will be hosting events for our holders such as AMA’s, giveaways &amp; others events for us to interact. Provide updates and timelines of each phase launch. Allowing opportunities to be whitelisted and potentially a role in discord.</p>
 
 				<h2>Phase 2:  Mutations</h2>
 				<p class="road-p">Currently Holders of oranges friends will be able to claim a mutation serum, where you can mutate your orange friend into a mutated orange. To claim a free serum you will need to own a minimum of 3 oranges friends or more. For every 3 oranges you can claim one serum. Whatever doesn’t get claimed will be up for a public mint. The supply of the serum will be 3333. The supply of the mutated orange friends will be limited to 3333 as well. </p>
@@ -196,8 +202,13 @@ class Site extends Component {
 
 		<div class="banner">
 
-			<div class="social-button">TWITTER</div>
-			<div class="social-button">OPENSEA</div>
+			<a href="https://twitter.com/orangefriends2?s=21" target="_blank" rel="noopener noreferrer">
+				<div class="social-button" >TWITTER</div>
+			</a>
+		
+			<a href="">
+				<div class="social-button" >OPENSEA</div>
+			</a>
 
 		</div>
 
