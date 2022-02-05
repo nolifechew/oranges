@@ -224,11 +224,15 @@ a:active { text-decoration: none; }
     align-items: center;
     justify-content: center;
     color: white;
-    
+    cursor: pointer;
     font-size: 7vw;
 }
 .connect:hover {
     
+}
+
+.hide {
+    display: none;
 }
 
 .mint {
