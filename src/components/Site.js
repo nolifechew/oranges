@@ -70,7 +70,7 @@ class Site extends Component {
 			
 		</div>
 
-		<div class="connect">NOT LIVE YET</div>
+		<div class="connect">LIVE @ 12pm PST</div>
 		<div class="hide">
 			{/* MINT */}
 			<div id="mint" class="mint">
