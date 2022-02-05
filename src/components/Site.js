@@ -174,11 +174,6 @@ class Site extends Component {
 				</div>
 				<div class="member">
 					
-					ALSSY - ARTIST
-
-				</div>
-				<div class="member">
-					
 					ORANGEDEV - CONTRACT
 
 				</div>
