@@ -30,9 +30,9 @@ class Site extends Component {
 			</a>
 
 			
-			<a href="">
+			
 				<div class="social-button" >OPENSEA</div>
-			</a>
+			
 			
 
 		</div>
@@ -206,9 +206,9 @@ class Site extends Component {
 				<div class="social-button" >TWITTER</div>
 			</a>
 		
-			<a href="">
+			
 				<div class="social-button" >OPENSEA</div>
-			</a>
+			
 
 		</div>
 
