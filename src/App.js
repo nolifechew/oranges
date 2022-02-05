@@ -191,7 +191,7 @@ class App extends Component {
 		let proof = this.state.proof;
 
     	//change this price if required
-		let price = 0.001;
+		let price = 0.02;
 
 		let fee = (price * num).toString();
 
