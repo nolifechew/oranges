@@ -79,7 +79,11 @@ class Site extends Component {
 				<img src={no} alt="" class="no-image"/>
 
 				<div class="pointer up" onClick={(event) => {
-					let max = 10
+					var max = 5
+					if (this.props.isPublicMint === true) {
+						max = 100
+					}
+					
 					let value = +document.getElementById("num").innerText
 					if(value !== max) {
 						document.getElementById("num").innerText = value + 1
