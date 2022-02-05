@@ -29,7 +29,7 @@ class Site extends Component {
 				<div class="social-button" >TWITTER</div>
 			</a>
 
-			<a href="https://opensea.io/collection/orange-friends-v2" target="_blank" rel="noopener noreferrer">
+			<a href="https://opensea.io/collection/orange-friends-official" target="_blank" rel="noopener noreferrer">
 				<div class="social-button" >OPENSEA</div>
 			</a>
 
@@ -70,57 +70,56 @@ class Site extends Component {
 			
 		</div>
 
-		<div class="connect">LIVE @ 12pm PST</div>
-		<div class="hide">
-			{/* MINT */}
-			<div id="mint" class="mint">
 
-				<div class="mint-num">
+		{/* MINT */}
+		<div id="mint" class="mint">
 
-					<img src={no} alt="" class="no-image"/>
+			<div class="mint-num">
 
-					<div class="pointer up" onClick={(event) => {
-						let max = 10
-						let value = +document.getElementById("num").innerText
-						if(value !== max) {
-							document.getElementById("num").innerText = value + 1
-						}
-									
-					}}></div>
+				<img src={no} alt="" class="no-image"/>
 
-					<span id="num">0</span>
-
-					<div class="pointer down" onClick={(event) => {
-
-						let value = +document.getElementById("num").innerText
-						if(value !== 0) {
-							document.getElementById("num").innerText = value - 1
-						}
-					}}></div>
-								
-				</div>
-				<div class="mint-box" onClick={(event) => {
-					let value = document.getElementById("num").innerText
-					if (value > 0) {
-						this.props.mint(value)
-						console.log("MINT PRESSED")
-						console.log("mint " + value + " oranges")
+				<div class="pointer up" onClick={(event) => {
+					let max = 10
+					let value = +document.getElementById("num").innerText
+					if(value !== max) {
+						document.getElementById("num").innerText = value + 1
 					}
-					
-				}}>MINT</div>
+								
+				}}></div>
 
+				<span id="num">0</span>
+
+				<div class="pointer down" onClick={(event) => {
+
+					let value = +document.getElementById("num").innerText
+					if(value !== 0) {
+						document.getElementById("num").innerText = value - 1
+					}
+				}}></div>
+							
 			</div>
+			<div class="mint-box" onClick={(event) => {
+				let value = document.getElementById("num").innerText
+				if (value > 0) {
+					this.props.mint(value)
+					console.log("MINT PRESSED")
+					console.log("mint " + value + " oranges")
+				}
+				
+			}}>MINT</div>
 
-			{/* CONNECT */}
+		</div>
+
+		{/* CONNECT */}
+
+		
+		<div id="connect" class="connect" onClick={(event) => {
+			console.log("CONNECT PRESSED")
+			this.props.connect();
+			
+		}}>CONNECT</div>
 
 			
-			<div id="connect" class="connect" onClick={(event) => {
-				console.log("CONNECT PRESSED")
-				this.props.connect();
-				
-			}}>CONNECT</div>
-
-		</div>	
 
 		{/* TRAITS */}
 		<div class="section traits">
@@ -129,7 +128,7 @@ class Site extends Component {
 
 				<h1 class="traits-p">TRAITS</h1>
 
-				<p class="traits-p">With 10,000 oranges and X traits, every Orange Friend is unique. Some are zombies and some are made of ice. Some do buisness and some are in monkey costumes. Hopefully you get an Orange Friend with rare traits and can show them to your friends.</p>
+				<p class="traits-p">With 10,000 oranges, every Orange Friend is unique. Some are zombies and some are made of ice. Some do buisness and some are in monkey costumes. Hopefully you get an Orange Friend with rare traits and can show them to your friends.</p>
 
 			</div>
 
@@ -214,7 +213,7 @@ class Site extends Component {
 				<div class="social-button" >TWITTER</div>
 			</a>
 		
-			<a href="https://opensea.io/collection/orange-friends-v2" target="_blank" rel="noopener noreferrer">
+			<a href="https://opensea.io/collection/orange-friends-official" target="_blank" rel="noopener noreferrer">
 				<div class="social-button" >OPENSEA</div>
 			</a>
 
